@@ -2,198 +2,505 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tara Collection | Fashion Store</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tara Collection | Fashion Store</title>
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: #222;
-      background: #f8f7f4;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    header {
-      background: #182b25;
-      color: white;
-      padding: 20px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #222;
+  background: #f8f7f4;
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 26px;
-    }
+header {
+  background: #182b25;
+  color: white;
+  padding: 20px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 16px;
-    }
+header h1 {
+  margin: 0;
+}
 
-    .hero {
-      text-align: center;
-      padding: 75px 20px;
-      background: #e6e9df;
-    }
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
 
-    .hero h2 {
-      font-size: 38px;
-      margin: 0 0 15px;
-    }
+nav a {
+  color: white;
+  text-decoration: none;
+}
 
-    .hero p {
-      color: #555;
-    }
+nav a:hover {
+  color: #d6e5d9;
+}
 
-    .shop-button {
-      display: inline-block;
-      background: #182b25;
-      color: white;
-      padding: 13px 24px;
-      margin-top: 12px;
-      text-decoration: none;
-      border-radius: 5px;
-    }
+.hero {
+  text-align: center;
+  padding: 70px 20px;
+  background: #e6e9df;
+}
 
-    .products {
-      padding: 40px 7%;
-    }
+.hero h2 {
+  font-size: 38px;
+  margin-bottom: 12px;
+}
 
-    .products h2 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
+.shop-button,
+button {
+  display: inline-block;
+  background: #182b25;
+  color: white;
+  padding: 11px 17px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
 
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 22px;
-    }
+button:hover,
+.shop-button:hover {
+  background: #345548;
+}
 
-    .product {
-      background: white;
-      padding: 15px;
-      border-radius: 8px;
-      text-align: center;
-      box-shadow: 0 2px 10px #00000010;
-    }
+.products,
+#cart-section,
+#order-section {
+  padding: 40px 6%;
+  scroll-margin-top: 15px;
+}
 
-    .product img {
-      width: 100%;
-      height: 230px;
-      object-fit: cover;
-      border-radius: 5px;
-    }
+h2.section-title {
+  text-align: center;
+  margin-bottom: 28px;
+}
 
-    .product button {
-      background: #182b25;
-      color: white;
-      border: none;
-      padding: 12px 18px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 22px;
+}
 
-    .product button:hover,
-    .shop-button:hover {
-      background: #345548;
-    }
+.product {
+  background: white;
+  padding: 15px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px #00000010;
+}
 
-    footer {
-      text-align: center;
-      background: #182b25;
-      color: white;
-      padding: 25px;
-      margin-top: 25px;
-    }
+.product img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 5px;
+}
 
-    @media (max-width: 500px) {
-      header {
-        padding: 18px;
-      }
+.price {
+  font-weight: bold;
+  color: #182b25;
+}
 
-      nav a {
-        margin-left: 0;
-        margin-right: 12px;
-      }
+.panel {
+  max-width: 850px;
+  margin: auto;
+  background: white;
+  padding: 22px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px #00000010;
+}
 
-      .hero h2 {
-        font-size: 29px;
-      }
-    }
-  </style>
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-bottom: 1px solid #eee;
+  padding: 15px 0;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.quantity button {
+  padding: 6px 11px;
+}
+
+.remove {
+  background: #9d2929;
+}
+
+.total {
+  text-align: right;
+  font-size: 21px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.empty {
+  text-align: center;
+  color: #666;
+  padding: 15px;
+}
+
+form {
+  display: grid;
+  gap: 14px;
+}
+
+label {
+  display: grid;
+  gap: 7px;
+  font-weight: bold;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font: inherit;
+}
+
+textarea {
+  min-height: 85px;
+}
+
+.notice {
+  color: #555;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+#order-result {
+  margin-top: 20px;
+  overflow-wrap: anywhere;
+}
+
+#order-result pre {
+  white-space: pre-wrap;
+  background: #f1f3ed;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+footer {
+  background: #182b25;
+  color: white;
+  text-align: center;
+  padding: 25px;
+  margin-top: 25px;
+}
+
+@media (max-width: 500px) {
+  header {
+    padding: 18px;
+  }
+
+  .hero h2 {
+    font-size: 29px;
+  }
+
+  .products,
+  #cart-section,
+  #order-section {
+    padding: 30px 18px;
+  }
+
+  .total {
+    text-align: left;
+  }
+}
+</style>
 </head>
 
 <body>
-  <header>
-    <h1>Tara Collection</h1>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#products">Products</a>
-      <a href="#contact">Contact</a>
-      <a href="#products">Cart (<span id="cart">0</span>)</a>
-    </nav>
-  </header>
 
-  <section class="hero" id="home">
-    <h2>Discover Your Style</h2>
-    <p>Fashion for Everyone. Find your perfect look.</p>
-    <a class="shop-button" href="#products">Shop Now</a>
-  </section>
+<header>
+  <h1>Tara Collection</h1>
 
-  <section class="products" id="products">
-    <h2>Our Products</h2>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#products">Products</a>
+    <a href="#cart-section">Cart (<span id="cart-count">0</span>)</a>
+    <a href="#order-section">Order</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-    <div class="product-grid">
-      <article class="product">
-        <img src="https://placehold.co/400x450/e8e0d5/333?text=Classic+Shirt"
-             alt="Classic shirt">
-        <h3>Classic Shirt</h3>
-        <p>৳850</p>
-        <button onclick="addToCart()">Add to Cart</button>
-      </article>
+<section class="hero" id="home">
+  <h2>Discover Your Style</h2>
+  <p>Fashion for Everyone. Find Your Perfect Look.</p>
+  <a class="shop-button" href="#products">Shop Now</a>
+</section>
 
-      <article class="product">
-        <img src="https://placehold.co/400x450/d9e1e8/333?text=Casual+T-Shirt"
-             alt="Casual T-shirt">
-        <h3>Casual T-Shirt</h3>
-        <p>৳550</p>
-        <button onclick="addToCart()">Add to Cart</button>
-      </article>
+<section class="products" id="products">
+  <h2 class="section-title">Our Products</h2>
 
-      <article class="product">
-        <img src="https://placehold.co/400x450/e4d9df/333?text=Fashion+Dress"
-             alt="Fashion dress">
-        <h3>Fashion Dress</h3>
-        <p>৳1,200</p>
-        <button onclick="addToCart()">Add to Cart</button>
-      </article>
+  <div class="product-grid">
+
+    <article class="product">
+      <img src="https://placehold.co/400x450/e8e0d5/333?text=Classic+Shirt"
+           alt="Classic Shirt">
+      <h3>Classic Shirt</h3>
+      <p class="price">৳850</p>
+      <button onclick="addToCart('shirt')">Add to Cart</button>
+    </article>
+
+    <article class="product">
+      <img src="https://placehold.co/400x450/d9e1e8/333?text=Casual+T-Shirt"
+           alt="Casual T-shirt">
+      <h3>Casual T-Shirt</h3>
+      <p class="price">৳550</p>
+      <button onclick="addToCart('tshirt')">Add to Cart</button>
+    </article>
+
+    <article class="product">
+      <img src="https://placehold.co/400x450/e4d9df/333?text=Fashion+Dress"
+           alt="Fashion Dress">
+      <h3>Fashion Dress</h3>
+      <p class="price">৳1200</p>
+      <button onclick="addToCart('dress')">Add to Cart</button>
+    </article>
+
+  </div>
+</section>
+
+<section id="cart-section">
+  <h2 class="section-title">Your Shopping Cart</h2>
+
+  <div class="panel">
+    <div id="cart-items">
+      <p class="empty">Your cart is empty.</p>
     </div>
-  </section>
 
-  <footer id="contact">
-    <h3>Tara Collection</h3>
-    <p>Contact us to learn more about our products.</p>
-    <p>© 2026 Tara Collection</p>
-  </footer>
+    <div class="total" id="cart-total">Total: ৳0</div>
 
-  <script>
-    let cartCount = 0;
+    <button onclick="goToOrder()">Proceed to Order</button>
+  </div>
+</section>
 
-    function addToCart() {
-      cartCount++;
-      document.getElementById("cart").textContent = cartCount;
-      alert("Product added to cart!");
+<section id="order-section">
+  <h2 class="section-title">Order Information</h2>
+
+  <div class="panel">
+    <form id="order-form">
+      <label>
+        Full Name
+        <input id="customer-name" type="text"
+               placeholder="Enter your full name" required>
+      </label>
+
+      <label>
+        Phone Number
+        <input id="customer-phone" type="tel"
+               placeholder="Enter your phone number" required>
+      </label>
+
+      <label>
+        Delivery Address
+        <textarea id="customer-address"
+                  placeholder="Enter your full address"
+                  required></textarea>
+      </label>
+
+      <label>
+        Additional Note (Optional)
+        <textarea id="customer-note"
+                  placeholder="Size, colour or other details"></textarea>
+      </label>
+
+      <button type="submit">Create Order Summary</button>
+    </form>
+
+    <div id="order-result" aria-live="polite"></div>
+
+    <p class="notice">
+      Demo checkout: this form creates an order summary in your browser.
+      It does not send orders to the shop owner or accept payments yet.
+    </p>
+  </div>
+</section>
+
+<footer id="contact">
+  <h3>Tara Collection</h3>
+  <p>Fashion for Everyone.</p>
+  <p>Contact us to learn more about our products.</p>
+  <p>© 2026 Tara Collection</p>
+</footer>
+
+<script>
+const products = {
+  shirt: { name: "Classic Shirt", price: 850 },
+  tshirt: { name: "Casual T-Shirt", price: 550 },
+  dress: { name: "Fashion Dress", price: 1200 }
+};
+
+const cart = {};
+
+function formatPrice(amount) {
+  return "৳" + amount.toLocaleString("en-BD");
+}
+
+function addToCart(id) {
+  cart[id] = (cart[id] || 0) + 1;
+  renderCart();
+  alert(products[id].name + " added to cart!");
+}
+
+function changeQuantity(id, amount) {
+  cart[id] = (cart[id] || 0) + amount;
+
+  if (cart[id] <= 0) {
+    delete cart[id];
+  }
+
+  renderCart();
+}
+
+function removeFromCart(id) {
+  delete cart[id];
+  renderCart();
+}
+
+function cartCount() {
+  return Object.values(cart).reduce(
+    (total, quantity) => total + quantity, 0
+  );
+}
+
+function cartTotal() {
+  return Object.entries(cart).reduce(
+    (total, [id, quantity]) =>
+      total + products[id].price * quantity, 0
+  );
+}
+
+function renderCart() {
+  document.getElementById("cart-count").textContent = cartCount();
+
+  const container = document.getElementById("cart-items");
+  const entries = Object.entries(cart);
+
+  if (entries.length === 0) {
+    container.innerHTML =
+      '<p class="empty">Your cart is empty. Add a product first.</p>';
+  } else {
+    container.innerHTML = entries.map(([id, quantity]) => `
+      <div class="cart-item">
+        <div>
+          <strong>${products[id].name}</strong>
+          <br>${formatPrice(products[id].price)} each
+        </div>
+
+        <div class="quantity">
+          <button type="button"
+            onclick="changeQuantity('${id}', -1)">−</button>
+          <span>${quantity}</span>
+          <button type="button"
+            onclick="changeQuantity('${id}', 1)">+</button>
+        </div>
+
+        <div>
+          <strong>${formatPrice(products[id].price * quantity)}</strong>
+          <br>
+          <button type="button" class="remove"
+            onclick="removeFromCart('${id}')">Remove</button>
+        </div>
+      </div>
+    `).join("");
+  }
+
+  document.getElementById("cart-total").textContent =
+    "Total: " + formatPrice(cartTotal());
+}
+
+function goToOrder() {
+  if (cartCount() === 0) {
+    alert("Please add a product to your cart first.");
+    return;
+  }
+
+  document.getElementById("order-section").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+document.getElementById("order-form").addEventListener(
+  "submit", function(event) {
+    event.preventDefault();
+
+    if (cartCount() === 0) {
+      alert("Your cart is empty. Please add a product first.");
+      return;
     }
-  </script>
+
+    const name = document.getElementById("customer-name").value.trim();
+    const phone = document.getElementById("customer-phone").value.trim();
+    const address = document.getElementById("customer-address").value.trim();
+    const note = document.getElementById("customer-note").value.trim();
+
+    const items = Object.entries(cart).map(([id, quantity]) =>
+      products[id].name + " × " + quantity + " = " +
+      formatPrice(products[id].price * quantity)
+    ).join("\n");
+
+    const summary =
+      "TARA COLLECTION - ORDER SUMMARY\n\n" +
+      "Name: " + name + "\n" +
+      "Phone: " + phone + "\n" +
+      "Address: " + address + "\n" +
+      (note ? "Note: " + note + "\n" : "") +
+      "\nProducts:\n" + items +
+      "\n\nTotal: " + formatPrice(cartTotal());
+
+    const result = document.getElementById("order-result");
+    result.replaceChildren();
+
+    const heading = document.createElement("h3");
+    heading.textContent = "Your Order Summary";
+
+    const pre = document.createElement("pre");
+    pre.textContent = summary;
+
+    const copyButton = document.createElement("button");
+    copyButton.type = "button";
+    copyButton.textContent = "Copy Order Summary";
+
+    copyButton.onclick = async function() {
+      try {
+        await navigator.clipboard.writeText(summary);
+        alert("Order summary copied. You can now share it with the shop owner.");
+      } catch (error) {
+        alert("Please select and copy the order summary manually.");
+      }
+    };
+
+    result.append(heading, pre, copyButton);
+    result.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+);
+
+renderCart();
+</script>
+
 </body>
 </html>
